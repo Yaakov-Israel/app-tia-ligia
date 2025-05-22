@@ -146,27 +146,38 @@ elif escolha_da_crianca == "🔡 Português Divertido":
             letra_para_mostrar = st.session_state.letra_clicada_nesta_aba
             st.success(f"Você clicou na letra **{letra_para_mostrar}**!", icon="🌟")
             
-            # --- CONSTRUINDO A URL COMPLETA DO GITHUB ---
-            # !!! IMPORTANTE: Substitua os valores abaixo pelos seus dados !!!
-            github_user = "SEU_NOME_DE_USUARIO_NO_GITHUB"  # Ex: "TiaLigiaProgramadora"
-            github_repo = "SEU_NOME_DO_REPOSITORIO_DO_APP" # Ex: "app-tia-ligia"
-            branch_name = "main" # Ou "master", dependendo do nome da sua branch principal no GitHub
-
-            # Monta a URL base para a pasta de sons
+            # ######################################################################################
+            # ### !!! ATENÇÃO, MEU CAMPEÃO!!! PRECISAMOS DOS SEUS DADOS EXATOS AQUI !!! ###
+            # ######################################################################################
+            # Substitua as TRÊS linhas abaixo com o SEU nome de usuário do GitHub,
+            # o NOME EXATO do seu repositório do app, e o nome da branch principal (geralmente "main").
+            # Se você não trocar "COLOQUE_SEU_USUARIO_GITHUB_AQUI" e 
+            # "COLOQUE_O_NOME_DO_SEU_REPOSITORIO_AQUI", o som NÃO VAI FUNCIONAR DE JEITO NENHUM!
+            
+            github_user = "COLOQUE_SEU_USUARIO_GITHUB_AQUI"  # Ex: "SuperProgramador123"
+            github_repo = "COLOQUE_O_NOME_DO_SEU_REPOSITORIO_AQUI" # Ex: "app-tia-ligia"
+            branch_name = "main" # Verifique se é "main" ou "master" no seu repositório. É IMPORTANTE!
+            # ######################################################################################
+            # ######################################################################################
+            
             url_base_audio = f"https://raw.githubusercontent.com/{github_user}/{github_repo}/{branch_name}/sons_alfabeto/"
-            # Monta a URL completa para o arquivo de som da letra clicada
             caminho_audio_url = f"{url_base_audio}{letra_para_mostrar}.mp3"
             
-            st.write(f"Tentando tocar o som de: {caminho_audio_url}") # Para a gente ver a URL que ele está tentando usar!
+            # Esta linha é para a gente ver no app qual URL ele está tentando usar. Ajuda a conferir!
+            st.write(f"Tentando tocar o som pela URL: {caminho_audio_url}") 
             
             try:
-                st.audio(caminho_audio_url, format="audio/mp3") # Tenta tocar usando a URL completa
-                st.caption(f"Tocando som para a letra {letra_para_mostrar}! Se não ouvir, verifique a URL acima, se o arquivo existe no GitHub e se o volume está ligado. 😉")
+                st.audio(caminho_audio_url, format="audio/mp3")
+                st.caption(f"Tocando som para a letra {letra_para_mostrar}! Se não ouvir, confira a URL acima (ela deve abrir o som no navegador se você colar lá), verifique se o arquivo existe MESMO no GitHub com o nome certo (maiúsculas/minúsculas!) e se o volume do seu computador está ligado. 😉")
             except Exception as e:
-                st.warning(f"Não consegui carregar o som da letra {letra_para_mostrar} usando a URL. Verifique os dados do GitHub (usuário, repositório, branch) e o caminho do arquivo. Erro: {e}")
-            
+                st.error(f"Oops! Tive um problema ao tentar carregar o som da letra {letra_para_mostrar} pela URL.")
+                st.error(f"URL que tentei usar: {caminho_audio_url}")
+                st.error(f"Detalhe técnico do erro: {e}")
+                st.warning("Confira se o nome de usuário, nome do repositório e nome da branch estão EXATAMENTE corretos no código. E também se a pasta 'sons_alfabeto' e o arquivo .mp3 existem no GitHub com os nomes idênticos (maiúsculas e minúsculas são super importantes!).")
+
             st.markdown("(Em breve: exemplos e figuras!)")
-            st.session_state.letra_clicada_nesta_aba = None
+            # Limpa a letra clicada para a próxima interação, para o áudio não ficar tocando sem novo clique.
+            st.session_state.letra_clicada_nesta_aba = None 
 
 
         st.markdown("---")
