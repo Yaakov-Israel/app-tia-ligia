@@ -46,9 +46,11 @@ lista_de_aventuras = [
     "🔡 Português Divertido",
     "🔢 Matemática Mágica",
     "🌳 Mundo das Ciências",
+    "🌍 Geografia Divertida", # NOVA SEÇÃO!
     "📜 Viagem pela História do Brasil"
 ]
-escolha_da_crianca = st.sidebar.selectbox("O que vamos explorar hoje, meu campeão?", lista_de_aventuras)
+# Ajustando a frase do menu!
+escolha_da_crianca = st.sidebar.selectbox("Qual aventura vamos descobrir?", lista_de_aventuras)
 
 # --- CONTEÚDO QUE APARECE NA PÁGINA PRINCIPAL ---
 
@@ -65,7 +67,8 @@ if escolha_da_crianca == "🌟 Página Inicial":
         - Jogos e desafios de Português! 🔡
         - Quebra-cabeças de Matemática! 🔢
         - Descobertas incríveis em Ciências! 🌳
-        - Aventuras pela História do nosso Brasil! 📜
+        - Aventuras pela Geografia! 🌍
+        - Viagens pela História do nosso Brasil! 📜
         - E muito mais no futuro!
         """)
     st.balloons()
@@ -150,8 +153,8 @@ elif escolha_da_crianca == "🔡 Português Divertido":
             github_repo = "app-tia-ligia"
             branch_name = "main"
             
-            url_base_audio = f"https://raw.githubusercontent.com/{github_user}/{github_repo}/{branch_name}/sons_alfabeto/"
-            caminho_audio_url = f"{url_base_audio}{letra_para_mostrar}.mp3"
+            url_base_audio = f"https://raw.githubusercontent.com/{github_user}/{github_repo}/{branch_name}/sons_alfabeto/" # Lembre-se da pasta sons_alfabeto/ no GitHub!
+            caminho_audio_url = f"{url_base_audio}{letra_para_mostrar}.mp3" # E dos arquivos .mp3 dentro dela!
             
             st.write(f"Tentando tocar o som pela URL: {caminho_audio_url}") 
             
@@ -225,76 +228,95 @@ elif escolha_da_crianca == "🔢 Matemática Mágica":
     st.markdown("---")
     st.info("Em breve: Jogo dos Blocos Lógicos, Desafios de Contagem e Tabuada divertida!", icon="💡")
 
-# ========== MODIFICAÇÃO COMEÇA AQUI: SEÇÃO DE CIÊNCIAS ==========
 elif escolha_da_crianca == "🌳 Mundo das Ciências":
     st.title("🌳 Explorando Nosso Mundo Incrível!")
     st.image("https://img.freepik.com/vetores-gratis/ilustracao-do-conceito-de-aula-de-ciencias_114360-19708.jpg?t=st=1716345518~exp=1716349118~hmac=1df1017dbf2549776a42d04a7614d62c32df3957dd790ab086192f0231531f60&w=1060", width=300)
     st.write("Olá, cientista mirim! Vamos investigar as plantas, os animais, o nosso corpo e todos os segredos da natureza e do universo!")
     st.markdown("---")
 
-    st.subheader("🐾 Safári Fotográfico dos Bichos! 🐾")
+    st.subheader("🐾 Bichos Curiosos e Seus Segredos! 🐾")
 
-    # Lista de animais com seus dados (nome, URL da imagem, fato curioso)
-    # Você pode adicionar mais animais aqui!
-    # Por enquanto, vou usar URLs de placeholder para as imagens. Você precisará encontrar links de imagens reais.
+    github_user_para_imagens = "Yaakov-Israel"
+    github_repo_para_imagens = "app-tia-ligia"
+    branch_name_para_imagens = "main"
+    nome_da_pasta_de_imagens = "imagens_animais" 
+
+    url_base_imagens_animais = f"https://raw.githubusercontent.com/{github_user_para_imagens}/{github_repo_para_imagens}/{branch_name_para_imagens}/{nome_da_pasta_de_imagens}/"
+
     animais_data = [
         {
-            "nome": "Leão",
-            "imagem_url": "https://img.freepik.com/fotos-gratis/leao-de-itado-na-natureza_23-2150470600.jpg?t=st=1716431169~exp=1716434769~hmac=49a6a5c8c164d9b8b0f6f31307032f1769b37a0dfc1617a3e80fd668d58dd326&w=1380",
-            "fato": "O leão é conhecido como o 'Rei da Selva' e seu rugido pode ser ouvido a quilômetros de distância!"
+            "nome": "Cachorro",
+            "imagem_url": f"{url_base_imagens_animais}Cachorro.webp", # Certifique-se que Cachorro.webp está na pasta imagens_animais
+            "fato": "O cachorro é o melhor amigo do ser humano e existem muitas raças diferentes, como esse filhote fofo que você encontrou!"
         },
         {
-            "nome": "Elefante",
-            "imagem_url": "https://img.freepik.com/fotos-gratis/incrivel-elefante-africano-caminhando-pela-grama_23-2150470576.jpg?t=st=1716431200~exp=1716434800~hmac=d301e343b658b5c2f224c61971cd5ff827f8407a000b28757db065631022d1c1&w=1380",
-            "fato": "O elefante é o maior animal terrestre, tem uma memória excelente e adora tomar banho de lama!"
+            "nome": "Gato",
+            "imagem_url": f"{url_base_imagens_animais}Gato.jpg", # Certifique-se que Gato.jpg está na pasta imagens_animais
+            "fato": "Os gatos são conhecidos por seus miados charmosos e por adorarem caixas de papelão!"
         },
         {
-            "nome": "Girafa",
-            "imagem_url": "https://img.freepik.com/fotos-gratis/foto-de-grande-plano-de-uma-girafa-em-um-campo-gramado_181624-29004.jpg?t=st=1716431225~exp=1716434825~hmac=a8a894f56f53f408d776d2a93acfd43b7b78a97e20c8f675d2d63d554554441f&w=1380",
-            "fato": "A girafa tem um pescoço super comprido para comer as folhas mais altas das árvores. E a língua dela também é enorme!"
+            "nome": "Esquilo",
+            "imagem_url": f"{url_base_imagens_animais}Esquilo.jpg", # Certifique-se que Esquilo.jpg está na pasta imagens_animais
+            "fato": "Os esquilos são roedores espertos que adoram guardar nozes para o inverno!"
         },
         {
+            "nome": "Axolote",
+            "imagem_url": f"{url_base_imagens_animais}axolote.jpg", # Envie axolote.jpg para a pasta imagens_animais
+            "fato": "O axolote é uma salamandra mexicana muito especial que consegue regenerar partes do corpo, como se fosse um super-herói!"
+        },
+        {
+            "nome": "Ornitorrinco",
+            "imagem_url": f"{url_base_imagens_animais}ornitorrinco.png", # Envie ornitorrinco.png para a pasta imagens_animais
+            "fato": "O ornitorrinco é um animalzinho único da Austrália: tem bico de pato, pelo de mamífero e ainda bota ovos!"
+        },
+        {
+            "nome": "Bicho-preguiça",
+            "imagem_url": f"{url_base_imagens_animais}bicho-preguica.webp", # Envie bicho-preguica.webp para a pasta imagens_animais
+            "fato": "A preguiça se move bem devagarinho pelas árvores e adora tirar um cochilo!"
+        },
+         {
             "nome": "Pinguim",
-            "imagem_url": "https://img.freepik.com/fotos-gratis/adoravel-retrato-de-pinguim-curioso-na-natureza_23-2150909083.jpg?t=st=1716431255~exp=1716434855~hmac=4d8a9e0896684d69056ff3cfc46b57107e8b310d990394d8343e36bb5b79c944&w=740",
+            "imagem_url": f"{url_base_imagens_animais}pinguim.jpg", # Substitua este link de exemplo pelo seu pinguim.jpg ou pinguim.webp na pasta imagens_animais
             "fato": "Os pinguins são aves que não voam, mas são excelentes nadadores! Eles vivem em lugares bem frios."
         }
     ]
-
-    # Inicializar o índice do animal atual ou se o botão "Próximo Animal" foi clicado
-    if 'animal_atual_idx' not in st.session_state or st.button("Próximo Animal!", key="btn_prox_animal"):
-        # Se já mostrou um animal, tenta pegar um diferente. Se for a primeira vez, pega um aleatório.
-        if 'animal_atual_idx' in st.session_state:
-            indice_anterior = st.session_state.animal_atual_idx
-            novo_indice = random.choice([i for i in range(len(animais_data)) if i != indice_anterior])
-            st.session_state.animal_atual_idx = novo_indice
-        else:
-            st.session_state.animal_atual_idx = random.choice(range(len(animais_data)))
+    
+    if 'animal_atual_idx' not in st.session_state: 
+        st.session_state.animal_atual_idx = random.choice(range(len(animais_data)))
         
-        # Limpa a mensagem de quando um animal foi carregado para não ficar presa na tela
-        if 'animal_carregado_msg' in st.session_state:
-            del st.session_state['animal_carregado_msg']
-        st.rerun() # Força o rerun para atualizar com o novo animal e limpar mensagens
+    if st.button("Próximo Animal Curioso!", key="btn_prox_animal_curioso"):
+        indice_anterior = st.session_state.animal_atual_idx
+        if len(animais_data) > 1:
+            novo_indice = random.choice([i for i in range(len(animais_data)) if i != indice_anterior])
+        else: 
+            novo_indice = indice_anterior
+        st.session_state.animal_atual_idx = novo_indice
+        st.rerun() 
 
-    # Exibir o animal atual
-    animal_idx = st.session_state.get('animal_atual_idx', 0) # Pega 0 se não existir ainda
+    animal_idx = st.session_state.get('animal_atual_idx', 0) 
     animal_atual = animais_data[animal_idx]
 
     st.markdown(f"### Conheça o(a): **{animal_atual['nome']}**")
     
-    # Tenta carregar a imagem
+    st.write(f"Tentando mostrar imagem de: {animal_atual['imagem_url']}")
     try:
         st.image(animal_atual['imagem_url'], caption=f"Um(a) lindo(a) {animal_atual['nome']}!", width=400)
-        st.session_state.animal_carregado_msg = "Foto carregada!" # Mensagem de sucesso (não visível, mas pode ser usada)
     except Exception as e:
-        st.error(f"Oops! Não consegui carregar a foto do(a) {animal_atual['nome']}. Vou tentar consertar! (Erro: {e})")
-        st.warning(f"A URL da imagem que tentei usar foi: {animal_atual['imagem_url']}")
+        st.error(f"Oops! Não consegui carregar a foto do(a) {animal_atual['nome']}. Verifique se o arquivo '{animal_atual['imagem_url'].split('/')[-1]}' está na pasta '{nome_da_pasta_de_imagens}' no GitHub e se a URL está correta. (Erro: {e})")
 
     st.info(f"**Curiosidade:** {animal_atual['fato']}", icon="💡")
 
     st.markdown("---")
     st.success("Em breve: Quizzes sobre animais, seus sons e onde eles vivem!", icon="🧐")
 
-# ========== MODIFICAÇÃO TERMINA AQUI: SEÇÃO DE CIÊNCIAS ==========
+# NOVA SEÇÃO DE GEOGRAFIA!
+elif escolha_da_crianca == "🌍 Geografia Divertida":
+    st.title("🌍 Explorando o Planeta Terra!")
+    st.image("https://img.freepik.com/vetores-gratis/ilustracao-do-conceito-de-planeta-terra_114360-10015.jpg?w=1060", width=300) # Imagem genérica de globo
+    st.write("Olá, pequeno(a) explorador(a) do mundo! Vamos descobrir os segredos do nosso planeta, os países, os mapas e muito mais!")
+    st.markdown("---")
+    st.info("Em breve: Aventuras pelos continentes, caça ao tesouro com mapas e curiosidades sobre diferentes culturas!", icon="🗺️")
+
 
 elif escolha_da_crianca == "📜 Viagem pela História do Brasil":
     st.title("📜 Uma Aventura pela História do Nosso Brasil!")
