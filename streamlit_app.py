@@ -1,5 +1,5 @@
 import streamlit as st
-import random # Vamos usar para sortear as palavras do nosso jogo!
+import random # Vamos usar para sortear as palavras e os números!
 
 # --- Configurações da Página e Estilo ---
 st.set_page_config(
@@ -28,9 +28,9 @@ st.markdown("""
     .stButton>button:hover {
         background-color: #45a049;
     }
-    h1 { color: #FF6347; }
-    h2 { color: #4682B4; }
-    h3 { color: #2E8B57; }
+    h1 { color: #FF6347; } /* Laranja avermelhado para títulos principais */
+    h2 { color: #4682B4; } /* Azul aço para headers */
+    h3 { color: #2E8B57; } /* Verde mar para subheaders */
 </style>
 """, unsafe_allow_html=True)
 
@@ -146,11 +146,9 @@ elif escolha_da_crianca == "🔡 Português Divertido":
             letra_para_mostrar = st.session_state.letra_clicada_nesta_aba
             st.success(f"Você clicou na letra **{letra_para_mostrar}**!", icon="🌟")
             
-            # --- DADOS DO GITHUB JÁ CORRIGIDOS PELA TIA LÍGIA! ---
-            github_user = "Yaakov-Israel"  # Confirmado pelo seu link!
-            github_repo = "app-tia-ligia" # Confirmado pelo seu link!
-            branch_name = "main"          # Confirmado pelo seu link!
-            # ----------------------------------------------------
+            github_user = "Yaakov-Israel"
+            github_repo = "app-tia-ligia"
+            branch_name = "main"
             
             url_base_audio = f"https://raw.githubusercontent.com/{github_user}/{github_repo}/{branch_name}/sons_alfabeto/"
             caminho_audio_url = f"{url_base_audio}{letra_para_mostrar}.mp3"
@@ -180,11 +178,65 @@ elif escolha_da_crianca == "🔡 Português Divertido":
         st.info("Aguarde! Mais aventuras com as palavras estão chegando em breve nesta aba!", icon="🚀")
         st.image("https://img.freepik.com/vetores-gratis/criancas-felizes-brincando-juntas_23-2149213103.jpg?t=st=1716358032~exp=1716361632~hmac=e5846a413d66c9637ca8e58b4e5d37161e2f73a6162f0ba7b7df726042f7542d&w=1060", width=400)
 
+# ========== MODIFICAÇÃO COMEÇA AQUI: SEÇÃO DE MATEMÁTICA ==========
 elif escolha_da_crianca == "🔢 Matemática Mágica":
-    st.title("🔢 Desafios Divertidos com Números!")
+    st.title("🔢 Desafios Divertidos com Números!") # h1
     st.image("https://img.freepik.com/vetores-gratis/personagens-de-desenhos-animados-de-conceito-de-educacao-matematica_23-2148500599.jpg?t=st=1716345481~exp=1716349081~hmac=31c3241a7d65f872e078497110fdc7bfae9cf512a8a83f76c6b4e5cb1c5d1675&w=1060", width=300)
     st.write("E aí, gênio dos números? Prepare-se para contar, somar, diminuir e resolver mistérios super legais com a matemática!")
+    st.markdown("---")
+
+    st.subheader("➕ Quanto é? Desafio da Soma! ➕")
+
+    # Inicializar o estado do jogo de matemática se ainda não existir
+    if 'num1_soma' not in st.session_state or st.session_state.get('mat_jogo_concluido', True):
+        st.session_state.num1_soma = random.randint(1, 10)  # Números de 1 a 10 para começar
+        st.session_state.num2_soma = random.randint(1, 10)
+        st.session_state.resposta_correta_soma = st.session_state.num1_soma + st.session_state.num2_soma
+        st.session_state.mat_jogo_concluido = False
+        st.session_state.mat_mensagem = ""
+        # Limpar a resposta do usuário anterior para o novo problema
+        if 'resposta_usuario_soma' in st.session_state:
+            del st.session_state['resposta_usuario_soma']
+
+
+    # Mostrar o problema de soma
+    st.markdown(f"### Resolva esta continha:  `{st.session_state.num1_soma} + {st.session_state.num2_soma} = ?`")
+
+    # Campo para a resposta do usuário
+    # Usamos uma chave única para o number_input para que ele seja recriado quando um novo problema for gerado
+    resposta_usuario = st.number_input("Qual a sua resposta, gênio?", min_value=0, step=1, key=f"resposta_soma_{st.session_state.num1_soma}_{st.session_state.num2_soma}", value=None)
+
+    if st.button("Conferir Resposta!", key="btn_conferir_soma"):
+        if resposta_usuario is not None:
+            if int(resposta_usuario) == st.session_state.resposta_correta_soma:
+                st.session_state.mat_mensagem = f"🎉 PARABÉNS! Você acertou em cheio! {st.session_state.num1_soma} + {st.session_state.num2_soma} = {st.session_state.resposta_correta_soma}! 🎉"
+                st.session_state.mat_jogo_concluido = True
+                st.balloons()
+            else:
+                st.session_state.mat_mensagem = f"😥 Quase lá! A resposta não é {int(resposta_usuario)}. Tente pensar um pouquinho mais! Dica: conte nos dedinhos se precisar! 😉"
+                st.session_state.mat_jogo_concluido = False # Permite tentar de novo o mesmo problema
+        else:
+            st.session_state.mat_mensagem = " সেরা Digite sua resposta primeiro, meu anjo! ❤️" # "Digite sua resposta primeiro, meu anjo!"
+            st.session_state.mat_jogo_concluido = False
+
+
+    # Mostrar mensagem de feedback
+    if st.session_state.get('mat_mensagem'):
+        if st.session_state.get('mat_jogo_concluido', False) and "PARABÉNS" in st.session_state.mat_mensagem : # Se acertou
+            st.success(st.session_state.mat_mensagem)
+            if st.button("Quero um Novo Desafio!", key="mat_novo_desafio"):
+                # A lógica no início do if já vai gerar um novo problema
+                st.rerun()
+        elif st.session_state.get('mat_mensagem'): # Se errou ou não respondeu
+            if "Digite sua resposta" in st.session_state.mat_mensagem:
+                st.warning(st.session_state.mat_mensagem)
+            else:
+                st.error(st.session_state.mat_mensagem)
+
+    st.markdown("---")
     st.info("Em breve: Jogo dos Blocos Lógicos, Desafios de Contagem e Tabuada divertida!", icon="💡")
+
+# ========== MODIFICAÇÃO TERMINA AQUI: SEÇÃO DE MATEMÁTICA ==========
 
 elif escolha_da_crianca == "🌳 Mundo das Ciências":
     st.title("🌳 Explorando Nosso Mundo Incrível!")
