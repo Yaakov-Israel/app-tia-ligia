@@ -146,37 +146,27 @@ elif escolha_da_crianca == "🔡 Português Divertido":
             letra_para_mostrar = st.session_state.letra_clicada_nesta_aba
             st.success(f"Você clicou na letra **{letra_para_mostrar}**!", icon="🌟")
             
-            # ######################################################################################
-            # ### !!! ATENÇÃO, MEU CAMPEÃO!!! PRECISAMOS DOS SEUS DADOS EXATOS AQUI !!! ###
-            # ######################################################################################
-            # Substitua as TRÊS linhas abaixo com o SEU nome de usuário do GitHub,
-            # o NOME EXATO do seu repositório do app, e o nome da branch principal (geralmente "main").
-            # Se você não trocar "COLOQUE_SEU_USUARIO_GITHUB_AQUI" e 
-            # "COLOQUE_O_NOME_DO_SEU_REPOSITORIO_AQUI", o som NÃO VAI FUNCIONAR DE JEITO NENHUM!
-            
-            github_user = "COLOQUE_SEU_USUARIO_GITHUB_AQUI"  # Ex: "SuperProgramador123"
-            github_repo = "COLOQUE_O_NOME_DO_SEU_REPOSITORIO_AQUI" # Ex: "app-tia-ligia"
-            branch_name = "main" # Verifique se é "main" ou "master" no seu repositório. É IMPORTANTE!
-            # ######################################################################################
-            # ######################################################################################
+            # --- DADOS DO GITHUB JÁ CORRIGIDOS PELA TIA LÍGIA! ---
+            github_user = "Yaakov-Israel"  # Confirmado pelo seu link!
+            github_repo = "app-tia-ligia" # Confirmado pelo seu link!
+            branch_name = "main"          # Confirmado pelo seu link!
+            # ----------------------------------------------------
             
             url_base_audio = f"https://raw.githubusercontent.com/{github_user}/{github_repo}/{branch_name}/sons_alfabeto/"
             caminho_audio_url = f"{url_base_audio}{letra_para_mostrar}.mp3"
             
-            # Esta linha é para a gente ver no app qual URL ele está tentando usar. Ajuda a conferir!
             st.write(f"Tentando tocar o som pela URL: {caminho_audio_url}") 
             
             try:
                 st.audio(caminho_audio_url, format="audio/mp3")
-                st.caption(f"Tocando som para a letra {letra_para_mostrar}! Se não ouvir, confira a URL acima (ela deve abrir o som no navegador se você colar lá), verifique se o arquivo existe MESMO no GitHub com o nome certo (maiúsculas/minúsculas!) e se o volume do seu computador está ligado. 😉")
+                st.caption(f"Tocando som para a letra {letra_para_mostrar}! Se não ouvir, confira a URL acima (ela deve abrir o som no navegador se você colar lá), verifique se o arquivo {letra_para_mostrar}.mp3 existe MESMO na pasta 'sons_alfabeto' do seu GitHub e se o volume do seu computador está ligado. 😉")
             except Exception as e:
                 st.error(f"Oops! Tive um problema ao tentar carregar o som da letra {letra_para_mostrar} pela URL.")
                 st.error(f"URL que tentei usar: {caminho_audio_url}")
                 st.error(f"Detalhe técnico do erro: {e}")
-                st.warning("Confira se o nome de usuário, nome do repositório e nome da branch estão EXATAMENTE corretos no código. E também se a pasta 'sons_alfabeto' e o arquivo .mp3 existem no GitHub com os nomes idênticos (maiúsculas e minúsculas são super importantes!).")
+                st.warning("Verifique se a pasta 'sons_alfabeto' e o arquivo .mp3 existem no GitHub com os nomes idênticos (maiúsculas e minúsculas são super importantes!). O repositório precisa ser público para o Streamlit acessar os arquivos de áudio assim.")
 
             st.markdown("(Em breve: exemplos e figuras!)")
-            # Limpa a letra clicada para a próxima interação, para o áudio não ficar tocando sem novo clique.
             st.session_state.letra_clicada_nesta_aba = None 
 
 
