@@ -133,37 +133,40 @@ elif escolha_da_crianca == "🔡 Português Divertido":
         num_colunas_alfabeto = 7
         cols_alfabeto = st.columns(num_colunas_alfabeto)
 
-        # Limpa a informação da letra e o áudio se nenhuma letra estiver selecionada para esta "rodada"
-        # Isso acontece quando a aba é selecionada pela primeira vez ou após um rerun não relacionado a um clique de letra.
         if 'letra_clicada_nesta_aba' not in st.session_state:
              st.session_state.letra_clicada_nesta_aba = None
 
         for i, letra in enumerate(alfabeto):
             coluna_atual = cols_alfabeto[i % num_colunas_alfabeto]
             if coluna_atual.button(letra, key=f"alf_{letra}", help=f"Descubra mais sobre a letra {letra}!", use_container_width=True):
-                st.session_state.letra_clicada_alfabeto = letra # Guarda qual letra foi clicada
-                st.session_state.letra_clicada_nesta_aba = letra # Para controlar a exibição do áudio
-                # Não precisa de rerun aqui, o st.audio será exibido condicionalmente abaixo
+                st.session_state.letra_clicada_alfabeto = letra
+                st.session_state.letra_clicada_nesta_aba = letra
         
-        # Exibe a informação da letra e o áudio SE uma letra foi clicada nesta aba/interação
         if st.session_state.letra_clicada_nesta_aba:
             letra_para_mostrar = st.session_state.letra_clicada_nesta_aba
             st.success(f"Você clicou na letra **{letra_para_mostrar}**!", icon="🌟")
             
-            caminho_audio_relativo = f"sons_alfabeto/{letra_para_mostrar}.mp3"
+            # --- CONSTRUINDO A URL COMPLETA DO GITHUB ---
+            # !!! IMPORTANTE: Substitua os valores abaixo pelos seus dados !!!
+            github_user = "SEU_NOME_DE_USUARIO_NO_GITHUB"  # Ex: "TiaLigiaProgramadora"
+            github_repo = "SEU_NOME_DO_REPOSITORIO_DO_APP" # Ex: "app-tia-ligia"
+            branch_name = "main" # Ou "master", dependendo do nome da sua branch principal no GitHub
+
+            # Monta a URL base para a pasta de sons
+            url_base_audio = f"https://raw.githubusercontent.com/{github_user}/{github_repo}/{branch_name}/sons_alfabeto/"
+            # Monta a URL completa para o arquivo de som da letra clicada
+            caminho_audio_url = f"{url_base_audio}{letra_para_mostrar}.mp3"
+            
+            st.write(f"Tentando tocar o som de: {caminho_audio_url}") # Para a gente ver a URL que ele está tentando usar!
             
             try:
-                # O Streamlit tentará encontrar este arquivo no seu repositório GitHub
-                # (quando rodando no Streamlit Community Cloud)
-                st.audio(caminho_audio_relativo)
-                st.caption(f"Tocando som para a letra {letra_para_mostrar}! Se não ouvir, verifique se o arquivo '{caminho_audio_relativo}' existe no GitHub e se o volume está ligado. 😉")
+                st.audio(caminho_audio_url, format="audio/mp3") # Tenta tocar usando a URL completa
+                st.caption(f"Tocando som para a letra {letra_para_mostrar}! Se não ouvir, verifique a URL acima, se o arquivo existe no GitHub e se o volume está ligado. 😉")
             except Exception as e:
-                # Esta exceção pode não ser pega se o arquivo simplesmente não existir e st.audio não levantar erro por isso.
-                # st.audio pode simplesmente não renderizar nada ou renderizar um player que não funciona.
-                st.warning(f"Não consegui carregar o som para a letra {letra_para_mostrar} de '{caminho_audio_relativo}'. A Tia Lígia vai verificar! Detalhe do erro (se houver): {e}")
+                st.warning(f"Não consegui carregar o som da letra {letra_para_mostrar} usando a URL. Verifique os dados do GitHub (usuário, repositório, branch) e o caminho do arquivo. Erro: {e}")
             
             st.markdown("(Em breve: exemplos e figuras!)")
-            st.session_state.letra_clicada_nesta_aba = None # Limpa para a próxima interação, para não mostrar o áudio de novo sem clique
+            st.session_state.letra_clicada_nesta_aba = None
 
 
         st.markdown("---")
@@ -195,5 +198,4 @@ elif escolha_da_crianca == "📜 Viagem pela História do Brasil":
     st.info("Em breve: Linha do tempo interativa, quem foram os Bandeirantes e a chegada dos portugueses!", icon="💡")
 
 st.markdown("---")
-# Ajustando a mensagem final conforme solicitado!
 st.markdown("Criado com muito carinho pela Tia Lígia para você! ❤️")
