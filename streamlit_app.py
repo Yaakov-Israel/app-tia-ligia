@@ -149,12 +149,12 @@ elif escolha_da_crianca == "🔡 Português Divertido":
             letra_para_mostrar = st.session_state.letra_clicada_nesta_aba
             st.success(f"Você clicou na letra **{letra_para_mostrar}**!", icon="🌟")
             
-            github_user = "Yaakov-Israel" # Confirmado por você!
-            github_repo = "app-tia-ligia" # Confirmado por você!
-            branch_name = "main"          # Confirmado por você!
+            github_user = "Yaakov-Israel"
+            github_repo = "app-tia-ligia"
+            branch_name = "main"
             
-            url_base_audio = f"https://raw.githubusercontent.com/{github_user}/{github_repo}/{branch_name}/sons_alfabeto/"
-            caminho_audio_url = f"{url_base_audio}{letra_para_mostrar}.mp3"
+            url_base_audio = f"https://raw.githubusercontent.com/{github_user}/{github_repo}/{branch_name}/sons_alfabeto/" 
+            caminho_audio_url = f"{url_base_audio}{letra_para_mostrar}.mp3" 
             
             st.write(f"Tentando tocar o som pela URL: {caminho_audio_url}") 
             
@@ -236,47 +236,47 @@ elif escolha_da_crianca == "🌳 Mundo das Ciências":
 
     st.subheader("🐾 Bichos Curiosos e Seus Segredos! 🐾")
 
-    github_user_para_imagens = "Yaakov-Israel" # Confirmado por você!
-    github_repo_para_imagens = "app-tia-ligia" # Confirmado por você!
-    branch_name_para_imagens = "main"         # Confirmado por você!
-    nome_da_pasta_de_imagens = "imagens_animais" # Confirmado por você!
+    github_user_para_imagens = "Yaakov-Israel"
+    github_repo_para_imagens = "app-tia-ligia"
+    branch_name_para_imagens = "main"
+    nome_da_pasta_de_imagens = "imagens_animais" 
 
     url_base_imagens_animais = f"https://raw.githubusercontent.com/{github_user_para_imagens}/{github_repo_para_imagens}/{branch_name_para_imagens}/{nome_da_pasta_de_imagens}/"
 
     animais_data = [
         {
             "nome": "Cachorro",
-            "imagem_url": f"{url_base_imagens_animais}Cachorro.webp", # Verifique se este arquivo existe na pasta!
+            "imagem_url": f"{url_base_imagens_animais}Cachorro.webp", 
             "fato": "O cachorro é o melhor amigo do ser humano e existem muitas raças diferentes, como esse filhote fofo que você encontrou!"
         },
         {
             "nome": "Gato",
-            "imagem_url": f"{url_base_imagens_animais}Gato.jpg", # Verifique se este arquivo existe na pasta!
+            "imagem_url": f"{url_base_imagens_animais}Gato.jpg", 
             "fato": "Os gatos são conhecidos por seus miados charmosos e por adorarem caixas de papelão!"
         },
         {
             "nome": "Esquilo",
-            "imagem_url": f"{url_base_imagens_animais}Esquilo.jpg", # Verifique se este arquivo existe na pasta!
+            "imagem_url": f"{url_base_imagens_animais}Esquilo.jpg", 
             "fato": "Os esquilos são roedores espertos que adoram guardar nozes para o inverno!"
         },
         {
             "nome": "Axolote",
-            "imagem_url": f"{url_base_imagens_animais}axolote.jpg", # Lembre-se de subir esta imagem!
+            "imagem_url": f"{url_base_imagens_animais}axolote.jpg", 
             "fato": "O axolote é uma salamandra mexicana muito especial que consegue regenerar partes do corpo, como se fosse um super-herói!"
         },
         {
             "nome": "Ornitorrinco",
-            "imagem_url": f"{url_base_imagens_animais}ornitorrinco.png", # Lembre-se de subir esta imagem!
+            "imagem_url": f"{url_base_imagens_animais}ornitorrinco.png", 
             "fato": "O ornitorrinco é um animalzinho único da Austrália: tem bico de pato, pelo de mamífero e ainda bota ovos!"
         },
         {
             "nome": "Bicho-preguiça",
-            "imagem_url": f"{url_base_imagens_animais}bicho-preguica.webp", # Lembre-se de subir esta imagem!
+            "imagem_url": f"{url_base_imagens_animais}bicho-preguica.webp", 
             "fato": "A preguiça se move bem devagarinho pelas árvores e adora tirar um cochilo!"
         },
          {
             "nome": "Pinguim",
-            "imagem_url": f"{url_base_imagens_animais}pinguim.jpg", # Lembre-se de subir esta imagem!
+            "imagem_url": f"{url_base_imagens_animais}pinguim.jpg", 
             "fato": "Os pinguins são aves que não voam, mas são excelentes nadadores! Eles vivem em lugares bem frios."
         }
     ]
@@ -309,13 +309,103 @@ elif escolha_da_crianca == "🌳 Mundo das Ciências":
     st.markdown("---")
     st.success("Em breve: Quizzes sobre animais, seus sons e onde eles vivem!", icon="🧐")
 
-# NOVA SEÇÃO DE GEOGRAFIA!
+# ========== MODIFICAÇÃO COMEÇA AQUI: SEÇÃO DE GEOGRAFIA ==========
 elif escolha_da_crianca == "🌍 Geografia Divertida":
     st.title("🌍 Explorando o Planeta Terra!")
     st.image("https://img.freepik.com/vetores-gratis/ilustracao-do-conceito-de-planeta-terra_114360-10015.jpg?w=1060", width=300)
-    st.write("Olá, pequeno explorador! Vamos descobrir os segredos do nosso planeta, os países, os mapas e muito mais!") # Ajustei o pronome aqui também
+    st.write("Olá, pequeno explorador! Vamos descobrir os segredos do nosso planeta, os países, os mapas e muito mais!")
     st.markdown("---")
-    st.info("Em breve: Aventuras pelos continentes, caça ao tesouro com mapas e curiosidades sobre diferentes culturas!", icon="🗺️")
+
+    st.subheader("🗺️ Viagem pelos Continentes! 🗺️")
+
+    # Lista de continentes com dados (nome, imagem URL, fato, ícone)
+    # Você precisará encontrar URLs de imagens para os mapas ou ícones dos continentes!
+    # Por enquanto, vou usar URLs de placeholder ou emojis como ícones.
+    
+    # Montando a URL base para suas imagens no GitHub (caso queira colocar mapas lá também)
+    # github_user_para_imagens = "Yaakov-Israel" # Já definido na seção de Ciências
+    # github_repo_para_imagens = "app-tia-ligia" # Já definido na seção de Ciências
+    # branch_name_para_imagens = "main" # Já definido na seção de Ciências
+    # nome_da_pasta_de_mapas = "imagens_mapas" # Exemplo de nome de pasta, se quiser criar
+    # url_base_mapas = f"https://raw.githubusercontent.com/{github_user_para_imagens}/{github_repo_para_imagens}/{branch_name_para_imagens}/{nome_da_pasta_de_mapas}/"
+
+
+    continentes_data = [
+        {
+            "nome": "América do Sul",
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-america-do-sul-com-paises_23-2148002062.jpg?w=740", # Exemplo, pode trocar!
+            "fato": "É onde fica o nosso amado Brasil e a gigantesca Floresta Amazônica, o pulmão do mundo!",
+            "icone": "🇧🇷"
+        },
+        {
+            "nome": "Europa",
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-europa_23-2147514985.jpg?w=740", # Exemplo, pode trocar!
+            "fato": "Um continente cheio de castelos antigos, reis, rainhas e onde nasceram muitas das histórias que conhecemos!",
+            "icone": "🏰"
+        },
+        {
+            "nome": "África",
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-africa_23-2147514978.jpg?w=740", # Exemplo, pode trocar!
+            "fato": "É o berço da humanidade! Tem desertos enormes, savanas com animais incríveis como leões e elefantes.",
+            "icone": "🦁"
+        },
+        {
+            "nome": "Ásia",
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-asia_23-2147514980.jpg?w=740", # Exemplo, pode trocar!
+            "fato": "O maior de todos os continentes! É lá que fica a Muralha da China e o Monte Everest, o ponto mais alto da Terra!",
+            "icone": "🐼" # Panda é um símbolo da China (Ásia)
+        },
+        {
+            "nome": "América do Norte",
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-america-do-norte_23-2147514979.jpg?w=740", # Exemplo, pode trocar!
+            "fato": "Tem países enormes como o Canadá (terra do xarope de bordo!) e os Estados Unidos (terra da Estátua da Liberdade!).",
+            "icone": "🍁" # Folha de bordo do Canadá
+        },
+        {
+            "nome": "Oceania",
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-australia_23-2147514981.jpg?w=740", # Exemplo (mostrando Austrália), pode trocar!
+            "fato": "Um continente formado por muitas ilhas e onde fica a Austrália, terra dos cangurus e coalas!",
+            "icone": "🐨"
+        },
+        {
+            "nome": "Antártida",
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-antartida_23-2147514986.jpg?w=740", # Exemplo, pode trocar!
+            "fato": "O lugar mais frio do nosso planeta! É coberto de gelo e lá vivem os pinguins imperadores.",
+            "icone": "🐧"
+        }
+    ]
+
+    if 'continente_atual_idx' not in st.session_state:
+        st.session_state.continente_atual_idx = random.choice(range(len(continentes_data)))
+
+    if st.button("Próximo Continente!", key="btn_prox_continente"):
+        indice_anterior = st.session_state.continente_atual_idx
+        if len(continentes_data) > 1:
+            novo_indice = random.choice([i for i in range(len(continentes_data)) if i != indice_anterior])
+        else:
+            novo_indice = indice_anterior
+        st.session_state.continente_atual_idx = novo_indice
+        st.rerun()
+
+    continente_idx = st.session_state.get('continente_atual_idx', 0)
+    continente_atual = continentes_data[continente_idx]
+
+    st.markdown(f"### {continente_atual['icone']} Bem-vindo à {continente_atual['nome']}! {continente_atual['icone']}")
+    
+    # Tenta mostrar a imagem do mapa/continente
+    st.write(f"Tentando mostrar imagem de: {continente_atual['imagem_url']}")
+    try:
+        st.image(continente_atual['imagem_url'], caption=f"Mapa ou imagem da {continente_atual['nome']}", width=450)
+    except Exception as e:
+        st.error(f"Oops! Não consegui carregar a imagem da {continente_atual['nome']}. (Erro: {e})")
+        st.warning(f"A URL da imagem que tentei usar foi: {continente_atual['imagem_url']}")
+
+    st.info(f"**Você Sabia?** {continente_atual['fato']}", icon="💡")
+    
+    st.markdown("---")
+    st.success("Em breve: Caça ao tesouro com mapas, curiosidades sobre países e muito mais!", icon="🗺️")
+
+# ========== MODIFICAÇÃO TERMINA AQUI: SEÇÃO DE GEOGRAFIA ==========
 
 
 elif escolha_da_crianca == "📜 Viagem pela História do Brasil":
