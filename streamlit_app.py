@@ -46,10 +46,9 @@ lista_de_aventuras = [
     "🔡 Português Divertido",
     "🔢 Matemática Mágica",
     "🌳 Mundo das Ciências",
-    "🌍 Geografia Divertida", # NOVA SEÇÃO!
+    "🌍 Geografia Divertida", 
     "📜 Viagem pela História do Brasil"
 ]
-# Ajustando a frase do menu!
 escolha_da_crianca = st.sidebar.selectbox("Qual aventura vamos descobrir?", lista_de_aventuras)
 
 # --- CONTEÚDO QUE APARECE NA PÁGINA PRINCIPAL ---
@@ -236,9 +235,9 @@ elif escolha_da_crianca == "🌳 Mundo das Ciências":
 
     st.subheader("🐾 Bichos Curiosos e Seus Segredos! 🐾")
 
-    github_user_para_imagens = "Yaakov-Israel"
-    github_repo_para_imagens = "app-tia-ligia"
-    branch_name_para_imagens = "main"
+    github_user_para_imagens = "Yaakov-Israel" 
+    github_repo_para_imagens = "app-tia-ligia" 
+    branch_name_para_imagens = "main"         
     nome_da_pasta_de_imagens = "imagens_animais" 
 
     url_base_imagens_animais = f"https://raw.githubusercontent.com/{github_user_para_imagens}/{github_repo_para_imagens}/{branch_name_para_imagens}/{nome_da_pasta_de_imagens}/"
@@ -309,67 +308,54 @@ elif escolha_da_crianca == "🌳 Mundo das Ciências":
     st.markdown("---")
     st.success("Em breve: Quizzes sobre animais, seus sons e onde eles vivem!", icon="🧐")
 
-# ========== MODIFICAÇÃO COMEÇA AQUI: SEÇÃO DE GEOGRAFIA ==========
 elif escolha_da_crianca == "🌍 Geografia Divertida":
     st.title("🌍 Explorando o Planeta Terra!")
-    st.image("https://img.freepik.com/vetores-gratis/ilustracao-do-conceito-de-planeta-terra_114360-10015.jpg?w=1060", width=300)
+    st.image("https://img.freepik.com/vetores-gratis/ilustracao-do-conceito-de-planeta-terra_114360-10015.jpg?w=1060", width=300) 
     st.write("Olá, pequeno explorador! Vamos descobrir os segredos do nosso planeta, os países, os mapas e muito mais!")
     st.markdown("---")
 
     st.subheader("🗺️ Viagem pelos Continentes! 🗺️")
-
-    # Lista de continentes com dados (nome, imagem URL, fato, ícone)
-    # Você precisará encontrar URLs de imagens para os mapas ou ícones dos continentes!
-    # Por enquanto, vou usar URLs de placeholder ou emojis como ícones.
     
-    # Montando a URL base para suas imagens no GitHub (caso queira colocar mapas lá também)
-    # github_user_para_imagens = "Yaakov-Israel" # Já definido na seção de Ciências
-    # github_repo_para_imagens = "app-tia-ligia" # Já definido na seção de Ciências
-    # branch_name_para_imagens = "main" # Já definido na seção de Ciências
-    # nome_da_pasta_de_mapas = "imagens_mapas" # Exemplo de nome de pasta, se quiser criar
-    # url_base_mapas = f"https://raw.githubusercontent.com/{github_user_para_imagens}/{github_repo_para_imagens}/{branch_name_para_imagens}/{nome_da_pasta_de_mapas}/"
-
-
     continentes_data = [
         {
             "nome": "América do Sul",
-            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-america-do-sul-com-paises_23-2148002062.jpg?w=740", # Exemplo, pode trocar!
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-america-do-sul-com-paises_23-2148002062.jpg?w=740", 
             "fato": "É onde fica o nosso amado Brasil e a gigantesca Floresta Amazônica, o pulmão do mundo!",
             "icone": "🇧🇷"
         },
         {
             "nome": "Europa",
-            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-europa_23-2147514985.jpg?w=740", # Exemplo, pode trocar!
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-europa_23-2147514985.jpg?w=740", 
             "fato": "Um continente cheio de castelos antigos, reis, rainhas e onde nasceram muitas das histórias que conhecemos!",
             "icone": "🏰"
         },
         {
             "nome": "África",
-            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-africa_23-2147514978.jpg?w=740", # Exemplo, pode trocar!
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-africa_23-2147514978.jpg?w=740", 
             "fato": "É o berço da humanidade! Tem desertos enormes, savanas com animais incríveis como leões e elefantes.",
             "icone": "🦁"
         },
         {
             "nome": "Ásia",
-            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-asia_23-2147514980.jpg?w=740", # Exemplo, pode trocar!
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-asia_23-2147514980.jpg?w=740", 
             "fato": "O maior de todos os continentes! É lá que fica a Muralha da China e o Monte Everest, o ponto mais alto da Terra!",
-            "icone": "🐼" # Panda é um símbolo da China (Ásia)
+            "icone": "🐼" 
         },
         {
             "nome": "América do Norte",
-            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-america-do-norte_23-2147514979.jpg?w=740", # Exemplo, pode trocar!
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-america-do-norte_23-2147514979.jpg?w=740", 
             "fato": "Tem países enormes como o Canadá (terra do xarope de bordo!) e os Estados Unidos (terra da Estátua da Liberdade!).",
-            "icone": "🍁" # Folha de bordo do Canadá
+            "icone": "🍁" 
         },
         {
             "nome": "Oceania",
-            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-australia_23-2147514981.jpg?w=740", # Exemplo (mostrando Austrália), pode trocar!
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-australia_23-2147514981.jpg?w=740", 
             "fato": "Um continente formado por muitas ilhas e onde fica a Austrália, terra dos cangurus e coalas!",
             "icone": "🐨"
         },
         {
             "nome": "Antártida",
-            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-antartida_23-2147514986.jpg?w=740", # Exemplo, pode trocar!
+            "imagem_url": "https://img.freepik.com/vetores-gratis/mapa-da-antartida_23-2147514986.jpg?w=740", 
             "fato": "O lugar mais frio do nosso planeta! É coberto de gelo e lá vivem os pinguins imperadores.",
             "icone": "🐧"
         }
@@ -392,7 +378,6 @@ elif escolha_da_crianca == "🌍 Geografia Divertida":
 
     st.markdown(f"### {continente_atual['icone']} Bem-vindo à {continente_atual['nome']}! {continente_atual['icone']}")
     
-    # Tenta mostrar a imagem do mapa/continente
     st.write(f"Tentando mostrar imagem de: {continente_atual['imagem_url']}")
     try:
         st.image(continente_atual['imagem_url'], caption=f"Mapa ou imagem da {continente_atual['nome']}", width=450)
@@ -405,14 +390,44 @@ elif escolha_da_crianca == "🌍 Geografia Divertida":
     st.markdown("---")
     st.success("Em breve: Caça ao tesouro com mapas, curiosidades sobre países e muito mais!", icon="🗺️")
 
-# ========== MODIFICAÇÃO TERMINA AQUI: SEÇÃO DE GEOGRAFIA ==========
-
-
+# ========== MODIFICAÇÃO COMEÇA AQUI: SEÇÃO DE HISTÓRIA DO BRASIL ==========
 elif escolha_da_crianca == "📜 Viagem pela História do Brasil":
     st.title("📜 Uma Aventura pela História do Nosso Brasil!")
-    st.image("https://img.freepik.com/vetores-gratis/mapa-do-brasil-em-estilo-simples-mapa-politico-do-pais-com-as-fronteiras-dos-estados-ilustracao-vetorial_159242-5883.jpg?t=st=1716345576~exp=1716349176~hmac=3e275369ba389a31e6322c50c127565076225626a8ddb1c4972ac991284c5b32&w=740", width=300)
+    # Você pode trocar esta imagem por uma mais específica sobre os povos originários ou a chegada dos portugueses!
+    st.image("https://img.freepik.com/vetores-gratis/mapa-do-brasil-em-estilo-simples-mapa-politico-do-pais-com-as-fronteiras-dos-estados-ilustracao-vetorial_159242-5883.jpg?w=740", width=300) 
     st.write("Prepare sua imaginação para uma viagem no tempo! Vamos conhecer os personagens, os lugares e as histórias que formaram o nosso país tão lindo!")
-    st.info("Em breve: Linha do tempo interativa, quem foram os Bandeirantes e a chegada dos portugueses!", icon="💡")
+    st.markdown("---")
+
+    st.subheader("🏹 Quem Já Morava Aqui? Os Povos Originários! 🏹")
+    
+    # Para esta imagem, você pode procurar no Freepik por "crianças indígenas Brasil desenho" ou "aldeia indígena ilustração"
+    # e substituir a URL abaixo. Ou subir sua própria imagem para a pasta 'imagens_historia' no GitHub.
+    # Exemplo de URL se você subir: f"https://raw.githubusercontent.com/Yaakov-Israel/app-tia-ligia/main/imagens_historia/povos_originarios.jpg"
+    st.image("https://img.freepik.com/vetores-gratis/grupo-de-criancas-indigenas-em-trajes-tradicionais_23-2148998592.jpg?w=1060", 
+             caption="Os primeiros corações a baterem em nossa terra.", width=450)
+
+    st.write("""
+    Muito, muito tempo atrás, antes mesmo de o Brasil se chamar Brasil, estas terras já tinham donos! 
+    Eram os **Povos Originários**, também conhecidos como indígenas. 🌳🦜
+
+    Eles não eram um povo só, mas MUITOS povos diferentes! Cada um com sua língua, seus costumes, 
+    suas músicas, suas danças e suas histórias incríveis passadas de geração em geração. 
+    Alguns exemplos de povos são os Tupis, os Guaranis, os Ianomâmis, os Xavantes, e tantos outros!
+
+    Eles viviam em harmonia com a natureza, conheciam todos os segredos da floresta, dos rios e dos animais. 
+    Sabiam quais plantas curavam, quais alimentos a terra dava, e como viver cuidando do nosso planeta. 💚
+    Suas casas, as ocas, eram feitas com materiais da natureza, e suas aldeias eram cheias de vida comunitária.
+    """)
+    
+    st.info("""
+    **Você Sabia?** Muitas palavras que usamos hoje em português vieram das línguas indígenas, como: 
+    *capim, mingau, pipoca, abacaxi, jacaré, tatu* e muitas outras! Que legal, né? 😊
+    """, icon="💡")
+
+    st.markdown("---")
+    st.success("Em breve: A chegada dos portugueses, as grandes navegações e muito mais da nossa história!", icon="⏳")
+
+# ========== MODIFICAÇÃO TERMINA AQUI: SEÇÃO DE HISTÓRIA DO BRASIL ==========
 
 st.markdown("---")
 st.markdown("Criado com muito carinho pela Tia Lígia para você! ❤️")
