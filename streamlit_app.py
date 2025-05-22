@@ -149,12 +149,12 @@ elif escolha_da_crianca == "🔡 Português Divertido":
             letra_para_mostrar = st.session_state.letra_clicada_nesta_aba
             st.success(f"Você clicou na letra **{letra_para_mostrar}**!", icon="🌟")
             
-            github_user = "Yaakov-Israel"
-            github_repo = "app-tia-ligia"
-            branch_name = "main"
+            github_user = "Yaakov-Israel" # Confirmado por você!
+            github_repo = "app-tia-ligia" # Confirmado por você!
+            branch_name = "main"          # Confirmado por você!
             
-            url_base_audio = f"https://raw.githubusercontent.com/{github_user}/{github_repo}/{branch_name}/sons_alfabeto/" # Lembre-se da pasta sons_alfabeto/ no GitHub!
-            caminho_audio_url = f"{url_base_audio}{letra_para_mostrar}.mp3" # E dos arquivos .mp3 dentro dela!
+            url_base_audio = f"https://raw.githubusercontent.com/{github_user}/{github_repo}/{branch_name}/sons_alfabeto/"
+            caminho_audio_url = f"{url_base_audio}{letra_para_mostrar}.mp3"
             
             st.write(f"Tentando tocar o som pela URL: {caminho_audio_url}") 
             
@@ -236,47 +236,47 @@ elif escolha_da_crianca == "🌳 Mundo das Ciências":
 
     st.subheader("🐾 Bichos Curiosos e Seus Segredos! 🐾")
 
-    github_user_para_imagens = "Yaakov-Israel"
-    github_repo_para_imagens = "app-tia-ligia"
-    branch_name_para_imagens = "main"
-    nome_da_pasta_de_imagens = "imagens_animais" 
+    github_user_para_imagens = "Yaakov-Israel" # Confirmado por você!
+    github_repo_para_imagens = "app-tia-ligia" # Confirmado por você!
+    branch_name_para_imagens = "main"         # Confirmado por você!
+    nome_da_pasta_de_imagens = "imagens_animais" # Confirmado por você!
 
     url_base_imagens_animais = f"https://raw.githubusercontent.com/{github_user_para_imagens}/{github_repo_para_imagens}/{branch_name_para_imagens}/{nome_da_pasta_de_imagens}/"
 
     animais_data = [
         {
             "nome": "Cachorro",
-            "imagem_url": f"{url_base_imagens_animais}Cachorro.webp", # Certifique-se que Cachorro.webp está na pasta imagens_animais
+            "imagem_url": f"{url_base_imagens_animais}Cachorro.webp", # Verifique se este arquivo existe na pasta!
             "fato": "O cachorro é o melhor amigo do ser humano e existem muitas raças diferentes, como esse filhote fofo que você encontrou!"
         },
         {
             "nome": "Gato",
-            "imagem_url": f"{url_base_imagens_animais}Gato.jpg", # Certifique-se que Gato.jpg está na pasta imagens_animais
+            "imagem_url": f"{url_base_imagens_animais}Gato.jpg", # Verifique se este arquivo existe na pasta!
             "fato": "Os gatos são conhecidos por seus miados charmosos e por adorarem caixas de papelão!"
         },
         {
             "nome": "Esquilo",
-            "imagem_url": f"{url_base_imagens_animais}Esquilo.jpg", # Certifique-se que Esquilo.jpg está na pasta imagens_animais
+            "imagem_url": f"{url_base_imagens_animais}Esquilo.jpg", # Verifique se este arquivo existe na pasta!
             "fato": "Os esquilos são roedores espertos que adoram guardar nozes para o inverno!"
         },
         {
             "nome": "Axolote",
-            "imagem_url": f"{url_base_imagens_animais}axolote.jpg", # Envie axolote.jpg para a pasta imagens_animais
+            "imagem_url": f"{url_base_imagens_animais}axolote.jpg", # Lembre-se de subir esta imagem!
             "fato": "O axolote é uma salamandra mexicana muito especial que consegue regenerar partes do corpo, como se fosse um super-herói!"
         },
         {
             "nome": "Ornitorrinco",
-            "imagem_url": f"{url_base_imagens_animais}ornitorrinco.png", # Envie ornitorrinco.png para a pasta imagens_animais
+            "imagem_url": f"{url_base_imagens_animais}ornitorrinco.png", # Lembre-se de subir esta imagem!
             "fato": "O ornitorrinco é um animalzinho único da Austrália: tem bico de pato, pelo de mamífero e ainda bota ovos!"
         },
         {
             "nome": "Bicho-preguiça",
-            "imagem_url": f"{url_base_imagens_animais}bicho-preguica.webp", # Envie bicho-preguica.webp para a pasta imagens_animais
+            "imagem_url": f"{url_base_imagens_animais}bicho-preguica.webp", # Lembre-se de subir esta imagem!
             "fato": "A preguiça se move bem devagarinho pelas árvores e adora tirar um cochilo!"
         },
          {
             "nome": "Pinguim",
-            "imagem_url": f"{url_base_imagens_animais}pinguim.jpg", # Substitua este link de exemplo pelo seu pinguim.jpg ou pinguim.webp na pasta imagens_animais
+            "imagem_url": f"{url_base_imagens_animais}pinguim.jpg", # Lembre-se de subir esta imagem!
             "fato": "Os pinguins são aves que não voam, mas são excelentes nadadores! Eles vivem em lugares bem frios."
         }
     ]
@@ -312,8 +312,8 @@ elif escolha_da_crianca == "🌳 Mundo das Ciências":
 # NOVA SEÇÃO DE GEOGRAFIA!
 elif escolha_da_crianca == "🌍 Geografia Divertida":
     st.title("🌍 Explorando o Planeta Terra!")
-    st.image("https://img.freepik.com/vetores-gratis/ilustracao-do-conceito-de-planeta-terra_114360-10015.jpg?w=1060", width=300) # Imagem genérica de globo
-    st.write("Olá, pequeno(a) explorador(a) do mundo! Vamos descobrir os segredos do nosso planeta, os países, os mapas e muito mais!")
+    st.image("https://img.freepik.com/vetores-gratis/ilustracao-do-conceito-de-planeta-terra_114360-10015.jpg?w=1060", width=300)
+    st.write("Olá, pequeno explorador! Vamos descobrir os segredos do nosso planeta, os países, os mapas e muito mais!") # Ajustei o pronome aqui também
     st.markdown("---")
     st.info("Em breve: Aventuras pelos continentes, caça ao tesouro com mapas e curiosidades sobre diferentes culturas!", icon="🗺️")
 
