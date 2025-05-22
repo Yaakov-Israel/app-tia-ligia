@@ -84,7 +84,6 @@ elif escolha_da_crianca == "🔡 Português Divertido":
 
     with tab_letras_perdidas:
         st.subheader("🎉 Jogo: Descubra a Letra Perdida! 🎉")
-        # ... (código do jogo "Descubra a Letra Perdida" exatamente como estava antes)
         palavras_do_jogo = {
             "CA_A": {"letra_certa": "S", "opcoes": ["S", "P", "L"], "palavra_completa": "CASA"},
             "GA_O": {"letra_certa": "T", "opcoes": ["M", "T", "R"], "palavra_completa": "GATO"},
@@ -126,61 +125,45 @@ elif escolha_da_crianca == "🔡 Português Divertido":
             elif st.session_state.get('mensagem_portugues'):
                  st.error(st.session_state.mensagem_portugues)
 
-
     with tab_mestres_alfabeto:
         st.subheader("✨ Alfabeto Mágico com Som! ✨")
-        st.write("Clique em uma letrinha para ouvir seu nome e ver uma figura bem legal!")
+        st.write("Clique em uma letrinha para ouvir seu nome!")
 
         alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         num_colunas_alfabeto = 7
         cols_alfabeto = st.columns(num_colunas_alfabeto)
 
-        if 'letra_clicada_alfabeto' not in st.session_state:
-            st.session_state.letra_clicada_alfabeto = ""
-        if 'info_letra_alfabeto' not in st.session_state:
-            st.session_state.info_letra_alfabeto = ""
-        if 'audio_path_alfabeto' not in st.session_state: # Para guardar o caminho do áudio
-            st.session_state.audio_path_alfabeto = None
+        # Limpa a informação da letra e o áudio se nenhuma letra estiver selecionada para esta "rodada"
+        # Isso acontece quando a aba é selecionada pela primeira vez ou após um rerun não relacionado a um clique de letra.
+        if 'letra_clicada_nesta_aba' not in st.session_state:
+             st.session_state.letra_clicada_nesta_aba = None
 
         for i, letra in enumerate(alfabeto):
             coluna_atual = cols_alfabeto[i % num_colunas_alfabeto]
             if coluna_atual.button(letra, key=f"alf_{letra}", help=f"Descubra mais sobre a letra {letra}!", use_container_width=True):
-                st.session_state.letra_clicada_alfabeto = letra
-                st.session_state.info_letra_alfabeto = f"Você clicou na letra **{letra}**!"
-                
-                # --- TENTANDO TOCAR O SOM ---
-                # Assumindo que você criou uma pasta "sons_alfabeto" no seu repositório GitHub
-                # E dentro dela tem arquivos como A.mp3, B.mp3, etc.
-                caminho_audio = f"sons_alfabeto/{letra}.mp3"
-                st.session_state.audio_path_alfabeto = caminho_audio # Guarda o caminho para tocar depois de exibir a info
-
-                # Não vamos usar st.rerun() aqui ainda, para o áudio tocar na mesma interação se possível,
-                # ou ser exibido logo abaixo.
+                st.session_state.letra_clicada_alfabeto = letra # Guarda qual letra foi clicada
+                st.session_state.letra_clicada_nesta_aba = letra # Para controlar a exibição do áudio
+                # Não precisa de rerun aqui, o st.audio será exibido condicionalmente abaixo
         
-        # Exibe a informação da letra e o áudio APÓS o loop de botões
-        if st.session_state.letra_clicada_alfabeto:
-            st.success(st.session_state.info_letra_alfabeto, icon="🌟")
-            if st.session_state.audio_path_alfabeto:
-                # O Streamlit vai procurar esse arquivo no seu repositório GitHub
+        # Exibe a informação da letra e o áudio SE uma letra foi clicada nesta aba/interação
+        if st.session_state.letra_clicada_nesta_aba:
+            letra_para_mostrar = st.session_state.letra_clicada_nesta_aba
+            st.success(f"Você clicou na letra **{letra_para_mostrar}**!", icon="🌟")
+            
+            caminho_audio_relativo = f"sons_alfabeto/{letra_para_mostrar}.mp3"
+            
+            try:
+                # O Streamlit tentará encontrar este arquivo no seu repositório GitHub
                 # (quando rodando no Streamlit Community Cloud)
-                try:
-                    # st.audio(st.session_state.audio_path_alfabeto)
-                    # Para tentar um autoplay mais direto (pode não funcionar em todos os navegadores por políticas de autoplay):
-                    audio_html = f"""
-                        <p>{st.session_state.info_letra_alfabeto}</p>
-                        <audio autoplay controls>
-                            <source src="{st.session_state.audio_path_alfabeto}" type="audio/mpeg">
-                            Seu navegador não suporta o elemento de áudio. Que pena!
-                        </audio>
-                        <p><small>Se o som não tocar, verifique se o arquivo {st.session_state.audio_path_alfabeto} existe no GitHub!</small></p>
-                    """
-                    # Limpando a mensagem de sucesso anterior para não duplicar
-                    # st.markdown("", unsafe_allow_html=True) # Isso pode causar um rerun e limpar o estado
-                    st.markdown(audio_html, unsafe_allow_html=True)
-
-                except Exception as e:
-                    st.warning(f"Não encontrei o som para a letra {st.session_state.letra_clicada_alfabeto} em {st.session_state.audio_path_alfabeto}. (Erro: {e})")
+                st.audio(caminho_audio_relativo)
+                st.caption(f"Tocando som para a letra {letra_para_mostrar}! Se não ouvir, verifique se o arquivo '{caminho_audio_relativo}' existe no GitHub e se o volume está ligado. 😉")
+            except Exception as e:
+                # Esta exceção pode não ser pega se o arquivo simplesmente não existir e st.audio não levantar erro por isso.
+                # st.audio pode simplesmente não renderizar nada ou renderizar um player que não funciona.
+                st.warning(f"Não consegui carregar o som para a letra {letra_para_mostrar} de '{caminho_audio_relativo}'. A Tia Lígia vai verificar! Detalhe do erro (se houver): {e}")
+            
             st.markdown("(Em breve: exemplos e figuras!)")
+            st.session_state.letra_clicada_nesta_aba = None # Limpa para a próxima interação, para não mostrar o áudio de novo sem clique
 
 
         st.markdown("---")
@@ -192,8 +175,6 @@ elif escolha_da_crianca == "🔡 Português Divertido":
     with tab_em_breve_port:
         st.info("Aguarde! Mais aventuras com as palavras estão chegando em breve nesta aba!", icon="🚀")
         st.image("https://img.freepik.com/vetores-gratis/criancas-felizes-brincando-juntas_23-2149213103.jpg?t=st=1716358032~exp=1716361632~hmac=e5846a413d66c9637ca8e58b4e5d37161e2f73a6162f0ba7b7df726042f7542d&w=1060", width=400)
-
-# ... (o restante do código para Matemática, Ciências, etc., continua igual) ...
 
 elif escolha_da_crianca == "🔢 Matemática Mágica":
     st.title("🔢 Desafios Divertidos com Números!")
@@ -214,4 +195,5 @@ elif escolha_da_crianca == "📜 Viagem pela História do Brasil":
     st.info("Em breve: Linha do tempo interativa, quem foram os Bandeirantes e a chegada dos portugueses!", icon="💡")
 
 st.markdown("---")
-st.markdown("Criado com muito carinho pela Tia Lígia e por você, nosso grande programador! 💖")
+# Ajustando a mensagem final conforme solicitado!
+st.markdown("Criado com muito carinho pela Tia Lígia para você! ❤️")
