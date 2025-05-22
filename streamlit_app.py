@@ -47,7 +47,7 @@ lista_de_aventuras = [
     "🔢 Matemática Mágica",
     "🌳 Mundo das Ciências",
     "🌍 Geografia Divertida", 
-    "📜 Viagem pela História do Brasil"
+    "📜 Viagem pela História do Brasil" 
 ]
 escolha_da_crianca = st.sidebar.selectbox("Qual aventura vamos descobrir?", lista_de_aventuras)
 
@@ -390,44 +390,46 @@ elif escolha_da_crianca == "🌍 Geografia Divertida":
     st.markdown("---")
     st.success("Em breve: Caça ao tesouro com mapas, curiosidades sobre países e muito mais!", icon="🗺️")
 
-# ========== MODIFICAÇÃO COMEÇA AQUI: SEÇÃO DE HISTÓRIA DO BRASIL ==========
+# ========== CONTEÚDO DA HISTÓRIA DO BRASIL CORRIGIDO E COMPLETO ==========
 elif escolha_da_crianca == "📜 Viagem pela História do Brasil":
     st.title("📜 Uma Aventura pela História do Nosso Brasil!")
-    # Você pode trocar esta imagem por uma mais específica sobre os povos originários ou a chegada dos portugueses!
+    # Imagem genérica inicial, pode ser trocada depois por algo mais específico da primeira lição
     st.image("https://img.freepik.com/vetores-gratis/mapa-do-brasil-em-estilo-simples-mapa-politico-do-pais-com-as-fronteiras-dos-estados-ilustracao-vetorial_159242-5883.jpg?w=740", width=300) 
     st.write("Prepare sua imaginação para uma viagem no tempo! Vamos conhecer os personagens, os lugares e as histórias que formaram o nosso país tão lindo!")
     st.markdown("---")
 
+    # Primeira fatia do bolo: Povos Originários
     st.subheader("🏹 Quem Já Morava Aqui? Os Povos Originários! 🏹")
     
-    # Para esta imagem, você pode procurar no Freepik por "crianças indígenas Brasil desenho" ou "aldeia indígena ilustração"
-    # e substituir a URL abaixo. Ou subir sua própria imagem para a pasta 'imagens_historia' no GitHub.
-    # Exemplo de URL se você subir: f"https://raw.githubusercontent.com/Yaakov-Israel/app-tia-ligia/main/imagens_historia/povos_originarios.jpg"
-    st.image("https://img.freepik.com/vetores-gratis/grupo-de-criancas-indigenas-em-trajes-tradicionais_23-2148998592.jpg?w=1060", 
+    # Você pode criar uma pasta 'imagens_historia' no seu GitHub e colocar uma imagem representativa lá.
+    # Exemplo de URL: f"https://raw.githubusercontent.com/Yaakov-Israel/app-tia-ligia/main/imagens_historia/povos_originarios.jpg"
+    # Por enquanto, usando uma imagem genérica do Freepik:
+    st.image("https://img.freepik.com/vetores-gratis/grupo-de-criancas-indigenas-em-trajes-tradicionais_23-2148998592.jpg?w=940", 
              caption="Os primeiros corações a baterem em nossa terra.", width=450)
 
     st.write("""
-    Muito, muito tempo atrás, antes mesmo de o Brasil se chamar Brasil, estas terras já tinham donos! 
-    Eram os **Povos Originários**, também conhecidos como indígenas. 🌳🦜
+    Muito, muito tempo atrás, antes mesmo de o Brasil se chamar Brasil, estas terras já tinham donos muito especiais! 
+    Eram os **Povos Originários**, que hoje também conhecemos como os povos indígenas. 🌳🦜 Eles foram os primeiros habitantes daqui!
 
-    Eles não eram um povo só, mas MUITOS povos diferentes! Cada um com sua língua, seus costumes, 
-    suas músicas, suas danças e suas histórias incríveis passadas de geração em geração. 
-    Alguns exemplos de povos são os Tupis, os Guaranis, os Ianomâmis, os Xavantes, e tantos outros!
+    E não era um povo só, não! Eram MUITOS povos diferentes, como se fossem várias famílias grandes espalhadas por todo o território. 
+    Cada povo tinha sua própria língua para conversar, seus costumes únicos, suas músicas alegres, suas danças cheias de significado 
+    e suas histórias incríveis que os mais velhos contavam para os mais novos, passando o conhecimento de geração em geração. 
+    Alguns exemplos de povos que talvez você já tenha ouvido falar são os Tupis, os Guaranis, os Ianomâmis, os Xavantes, os Pataxós... e existem muitos, muitos outros!
 
-    Eles viviam em harmonia com a natureza, conheciam todos os segredos da floresta, dos rios e dos animais. 
-    Sabiam quais plantas curavam, quais alimentos a terra dava, e como viver cuidando do nosso planeta. 💚
-    Suas casas, as ocas, eram feitas com materiais da natureza, e suas aldeias eram cheias de vida comunitária.
+    Esses povos viviam em uma linda harmonia com a natureza. Eles conheciam todos os segredos da floresta, dos rios e dos animais. 
+    Sabiam quais plantas serviam de remédio, quais frutas e raízes a terra oferecia para se alimentar, e como viver cuidando do nosso planeta com muito respeito e carinho. 💚
+    Suas casas, chamadas **ocas**, eram grandes e feitas com materiais da natureza, como palha e madeira. E suas aldeias eram lugares de muita união, onde todos se ajudavam e compartilhavam o que tinham.
     """)
     
     st.info("""
-    **Você Sabia?** Muitas palavras que usamos hoje em português vieram das línguas indígenas, como: 
-    *capim, mingau, pipoca, abacaxi, jacaré, tatu* e muitas outras! Que legal, né? 😊
+    **Você Sabia?** Muitas palavras que usamos todos os dias no nosso português vieram das línguas indígenas! Quer ver só?
+    *Abacaxi, amendoim, capim, caju, catapora, Gambá, Guaraná, Ipê, Jacaré, Mandioca, Mingau, Paçoca, Peteca, Pindaíba, Pipoca, Piranha, Sabiá, Samambaia, Tatu, Tucano...* e um montão de outras! Que herança rica eles nos deixaram, né? 😊
     """, icon="💡")
 
     st.markdown("---")
-    st.success("Em breve: A chegada dos portugueses, as grandes navegações e muito mais da nossa história!", icon="⏳")
+    st.success("Em breve: A chegada dos portugueses e o começo de uma nova história, as grandes navegações e muito mais da nossa jornada pelo tempo!", icon="⏳")
 
-# ========== MODIFICAÇÃO TERMINA AQUI: SEÇÃO DE HISTÓRIA DO BRASIL ==========
+# ========== FIM DA SEÇÃO DE HISTÓRIA DO BRASIL ==========
 
 st.markdown("---")
 st.markdown("Criado com muito carinho pela Tia Lígia para você! ❤️")
