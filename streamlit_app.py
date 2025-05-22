@@ -1,5 +1,5 @@
 import streamlit as st
-import random # Vamos usar para sortear as palavras e os números!
+import random # Vamos usar para sortear as palavras, os números e os animais!
 
 # --- Configurações da Página e Estilo ---
 st.set_page_config(
@@ -178,32 +178,24 @@ elif escolha_da_crianca == "🔡 Português Divertido":
         st.info("Aguarde! Mais aventuras com as palavras estão chegando em breve nesta aba!", icon="🚀")
         st.image("https://img.freepik.com/vetores-gratis/criancas-felizes-brincando-juntas_23-2149213103.jpg?t=st=1716358032~exp=1716361632~hmac=e5846a413d66c9637ca8e58b4e5d37161e2f73a6162f0ba7b7df726042f7542d&w=1060", width=400)
 
-# ========== MODIFICAÇÃO COMEÇA AQUI: SEÇÃO DE MATEMÁTICA ==========
 elif escolha_da_crianca == "🔢 Matemática Mágica":
-    st.title("🔢 Desafios Divertidos com Números!") # h1
+    st.title("🔢 Desafios Divertidos com Números!")
     st.image("https://img.freepik.com/vetores-gratis/personagens-de-desenhos-animados-de-conceito-de-educacao-matematica_23-2148500599.jpg?t=st=1716345481~exp=1716349081~hmac=31c3241a7d65f872e078497110fdc7bfae9cf512a8a83f76c6b4e5cb1c5d1675&w=1060", width=300)
     st.write("E aí, gênio dos números? Prepare-se para contar, somar, diminuir e resolver mistérios super legais com a matemática!")
     st.markdown("---")
 
     st.subheader("➕ Quanto é? Desafio da Soma! ➕")
 
-    # Inicializar o estado do jogo de matemática se ainda não existir
     if 'num1_soma' not in st.session_state or st.session_state.get('mat_jogo_concluido', True):
-        st.session_state.num1_soma = random.randint(1, 10)  # Números de 1 a 10 para começar
+        st.session_state.num1_soma = random.randint(1, 10)
         st.session_state.num2_soma = random.randint(1, 10)
         st.session_state.resposta_correta_soma = st.session_state.num1_soma + st.session_state.num2_soma
         st.session_state.mat_jogo_concluido = False
         st.session_state.mat_mensagem = ""
-        # Limpar a resposta do usuário anterior para o novo problema
         if 'resposta_usuario_soma' in st.session_state:
             del st.session_state['resposta_usuario_soma']
 
-
-    # Mostrar o problema de soma
     st.markdown(f"### Resolva esta continha:  `{st.session_state.num1_soma} + {st.session_state.num2_soma} = ?`")
-
-    # Campo para a resposta do usuário
-    # Usamos uma chave única para o number_input para que ele seja recriado quando um novo problema for gerado
     resposta_usuario = st.number_input("Qual a sua resposta, gênio?", min_value=0, step=1, key=f"resposta_soma_{st.session_state.num1_soma}_{st.session_state.num2_soma}", value=None)
 
     if st.button("Conferir Resposta!", key="btn_conferir_soma"):
@@ -214,20 +206,17 @@ elif escolha_da_crianca == "🔢 Matemática Mágica":
                 st.balloons()
             else:
                 st.session_state.mat_mensagem = f"😥 Quase lá! A resposta não é {int(resposta_usuario)}. Tente pensar um pouquinho mais! Dica: conte nos dedinhos se precisar! 😉"
-                st.session_state.mat_jogo_concluido = False # Permite tentar de novo o mesmo problema
+                st.session_state.mat_jogo_concluido = False
         else:
-            st.session_state.mat_mensagem = " সেরা Digite sua resposta primeiro, meu anjo! ❤️" # "Digite sua resposta primeiro, meu anjo!"
+            st.session_state.mat_mensagem = "Digite sua resposta primeiro, meu campeão!"
             st.session_state.mat_jogo_concluido = False
 
-
-    # Mostrar mensagem de feedback
     if st.session_state.get('mat_mensagem'):
-        if st.session_state.get('mat_jogo_concluido', False) and "PARABÉNS" in st.session_state.mat_mensagem : # Se acertou
+        if st.session_state.get('mat_jogo_concluido', False) and "PARABÉNS" in st.session_state.mat_mensagem :
             st.success(st.session_state.mat_mensagem)
             if st.button("Quero um Novo Desafio!", key="mat_novo_desafio"):
-                # A lógica no início do if já vai gerar um novo problema
                 st.rerun()
-        elif st.session_state.get('mat_mensagem'): # Se errou ou não respondeu
+        elif st.session_state.get('mat_mensagem'):
             if "Digite sua resposta" in st.session_state.mat_mensagem:
                 st.warning(st.session_state.mat_mensagem)
             else:
@@ -236,13 +225,76 @@ elif escolha_da_crianca == "🔢 Matemática Mágica":
     st.markdown("---")
     st.info("Em breve: Jogo dos Blocos Lógicos, Desafios de Contagem e Tabuada divertida!", icon="💡")
 
-# ========== MODIFICAÇÃO TERMINA AQUI: SEÇÃO DE MATEMÁTICA ==========
-
+# ========== MODIFICAÇÃO COMEÇA AQUI: SEÇÃO DE CIÊNCIAS ==========
 elif escolha_da_crianca == "🌳 Mundo das Ciências":
     st.title("🌳 Explorando Nosso Mundo Incrível!")
     st.image("https://img.freepik.com/vetores-gratis/ilustracao-do-conceito-de-aula-de-ciencias_114360-19708.jpg?t=st=1716345518~exp=1716349118~hmac=1df1017dbf2549776a42d04a7614d62c32df3957dd790ab086192f0231531f60&w=1060", width=300)
     st.write("Olá, cientista mirim! Vamos investigar as plantas, os animais, o nosso corpo e todos os segredos da natureza e do universo!")
-    st.info("Em breve: Experiências malucas (e seguras!), curiosidades sobre os dinossauros e muito mais!", icon="💡")
+    st.markdown("---")
+
+    st.subheader("🐾 Safári Fotográfico dos Bichos! 🐾")
+
+    # Lista de animais com seus dados (nome, URL da imagem, fato curioso)
+    # Você pode adicionar mais animais aqui!
+    # Por enquanto, vou usar URLs de placeholder para as imagens. Você precisará encontrar links de imagens reais.
+    animais_data = [
+        {
+            "nome": "Leão",
+            "imagem_url": "https://img.freepik.com/fotos-gratis/leao-de-itado-na-natureza_23-2150470600.jpg?t=st=1716431169~exp=1716434769~hmac=49a6a5c8c164d9b8b0f6f31307032f1769b37a0dfc1617a3e80fd668d58dd326&w=1380",
+            "fato": "O leão é conhecido como o 'Rei da Selva' e seu rugido pode ser ouvido a quilômetros de distância!"
+        },
+        {
+            "nome": "Elefante",
+            "imagem_url": "https://img.freepik.com/fotos-gratis/incrivel-elefante-africano-caminhando-pela-grama_23-2150470576.jpg?t=st=1716431200~exp=1716434800~hmac=d301e343b658b5c2f224c61971cd5ff827f8407a000b28757db065631022d1c1&w=1380",
+            "fato": "O elefante é o maior animal terrestre, tem uma memória excelente e adora tomar banho de lama!"
+        },
+        {
+            "nome": "Girafa",
+            "imagem_url": "https://img.freepik.com/fotos-gratis/foto-de-grande-plano-de-uma-girafa-em-um-campo-gramado_181624-29004.jpg?t=st=1716431225~exp=1716434825~hmac=a8a894f56f53f408d776d2a93acfd43b7b78a97e20c8f675d2d63d554554441f&w=1380",
+            "fato": "A girafa tem um pescoço super comprido para comer as folhas mais altas das árvores. E a língua dela também é enorme!"
+        },
+        {
+            "nome": "Pinguim",
+            "imagem_url": "https://img.freepik.com/fotos-gratis/adoravel-retrato-de-pinguim-curioso-na-natureza_23-2150909083.jpg?t=st=1716431255~exp=1716434855~hmac=4d8a9e0896684d69056ff3cfc46b57107e8b310d990394d8343e36bb5b79c944&w=740",
+            "fato": "Os pinguins são aves que não voam, mas são excelentes nadadores! Eles vivem em lugares bem frios."
+        }
+    ]
+
+    # Inicializar o índice do animal atual ou se o botão "Próximo Animal" foi clicado
+    if 'animal_atual_idx' not in st.session_state or st.button("Próximo Animal!", key="btn_prox_animal"):
+        # Se já mostrou um animal, tenta pegar um diferente. Se for a primeira vez, pega um aleatório.
+        if 'animal_atual_idx' in st.session_state:
+            indice_anterior = st.session_state.animal_atual_idx
+            novo_indice = random.choice([i for i in range(len(animais_data)) if i != indice_anterior])
+            st.session_state.animal_atual_idx = novo_indice
+        else:
+            st.session_state.animal_atual_idx = random.choice(range(len(animais_data)))
+        
+        # Limpa a mensagem de quando um animal foi carregado para não ficar presa na tela
+        if 'animal_carregado_msg' in st.session_state:
+            del st.session_state['animal_carregado_msg']
+        st.rerun() # Força o rerun para atualizar com o novo animal e limpar mensagens
+
+    # Exibir o animal atual
+    animal_idx = st.session_state.get('animal_atual_idx', 0) # Pega 0 se não existir ainda
+    animal_atual = animais_data[animal_idx]
+
+    st.markdown(f"### Conheça o(a): **{animal_atual['nome']}**")
+    
+    # Tenta carregar a imagem
+    try:
+        st.image(animal_atual['imagem_url'], caption=f"Um(a) lindo(a) {animal_atual['nome']}!", width=400)
+        st.session_state.animal_carregado_msg = "Foto carregada!" # Mensagem de sucesso (não visível, mas pode ser usada)
+    except Exception as e:
+        st.error(f"Oops! Não consegui carregar a foto do(a) {animal_atual['nome']}. Vou tentar consertar! (Erro: {e})")
+        st.warning(f"A URL da imagem que tentei usar foi: {animal_atual['imagem_url']}")
+
+    st.info(f"**Curiosidade:** {animal_atual['fato']}", icon="💡")
+
+    st.markdown("---")
+    st.success("Em breve: Quizzes sobre animais, seus sons e onde eles vivem!", icon="🧐")
+
+# ========== MODIFICAÇÃO TERMINA AQUI: SEÇÃO DE CIÊNCIAS ==========
 
 elif escolha_da_crianca == "📜 Viagem pela História do Brasil":
     st.title("📜 Uma Aventura pela História do Nosso Brasil!")
