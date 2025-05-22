@@ -158,4 +158,4 @@ elif escolha_da_crianca == "📜 Viagem pela História do Brasil":
 
 st.markdown("---")
 # Ajustando a mensagem final!
-st.markdown("Criado com muito carinho pela Tia Lígia e por você, nosso grande programador! 💖")
+st.markdown("Criado com muito amor e carinho pela Tia Lígia para você, querido (a) aluno (a)! 💖")
